@@ -1,21 +1,39 @@
 <div class="chat-container p-shadow-4">
   <div class="chat-header">
-    <span class="chat-title">Assistente IA</span>
+    <span class="chat-title">TS2Advlp</span>
   </div>
   <div class="chat-messages" #scrollContainer>
-    <div *ngFor="let msg of messages" [ngClass]="{'user': msg.sender === 'user', 'ai': msg.sender === 'ai'}" class="chat-message">
+    <div
+      *ngFor="let msg of messages"
+      [ngClass]="{ user: msg.sender === 'user', ai: msg.sender === 'ai' }"
+      class="chat-message"
+    >
       <div class="avatar">
-        <i *ngIf="msg.sender === 'ai'" class="pi pi-robot"></i>
+        <i *ngIf="msg.sender === 'ai'" class="pi pi-microchip-ai
+"></i>
         <i *ngIf="msg.sender === 'user'" class="pi pi-user"></i>
       </div>
       <div class="bubble">
         <span>{{ msg.content }}</span>
-        <span class="timestamp">{{ msg.timestamp | date:'shortTime' }}</span>
+        <span class="timestamp">{{ msg.timestamp | date : "shortTime" }}</span>
       </div>
     </div>
   </div>
   <form class="chat-input" (ngSubmit)="sendMessage()">
-    <input pInputText type="text" [(ngModel)]="userInput" name="userInput" placeholder="Digite sua pergunta ou código..." autocomplete="off" />
-    <button pButton type="submit" icon="pi pi-send" label="Enviar" [disabled]="!userInput.trim()"></button>
+    <input
+      pInputText
+      type="text"
+      [(ngModel)]="userInput"
+      name="userInput"
+      placeholder="Digite sua pergunta ou código..."
+      autocomplete="off"
+    />
+    <button
+      pButton
+      type="submit"
+      icon="pi pi-send"
+      label="Enviar"
+      [disabled]="!userInput.trim()"
+    ></button>
   </form>
 </div>
