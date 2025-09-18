@@ -3,7 +3,9 @@ html {
   height: 100%;
   margin: 0;
   padding: 0;
-  background: #0a192f;
+  background: #181c24;
+  color: #e6e6e6;
+  font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
 }
 
 .chat-container {
@@ -12,7 +14,7 @@ html {
   width: 100vw;
   height: 100vh;
   margin: 0;
-  background: linear-gradient(135deg, #0a192f 0%, #112240 100%);
+  background: linear-gradient(135deg, #181c24 0%, #232b3a 100%);
   border-radius: 0;
   box-shadow: none;
   overflow: hidden;
@@ -23,8 +25,8 @@ html {
 }
 
 .chat-header {
-  background: rgba(20, 40, 80, 0.95);
-  color: #a8b2d1;
+  background: rgba(24, 28, 36, 0.98);
+  color: #bfc9db;
   padding: 1.2rem 2rem;
   font-size: 1.3rem;
   font-weight: 700;
@@ -37,8 +39,8 @@ html {
 
 .chat-title {
   margin-left: 0.5rem;
-  color: #64ffda;
-  font-size: 1.4rem;
+  color: #6ec1e4;
+  font-size: 1.3rem;
   letter-spacing: 0.04em;
 }
 
@@ -51,15 +53,15 @@ html {
   flex-direction: column;
   gap: 1.3rem;
   scrollbar-width: thin;
-  scrollbar-color: #233554 #0a192f;
+  scrollbar-color: #232b3a #181c24;
 }
 
 .chat-messages::-webkit-scrollbar {
   width: 8px;
-  background: #0a192f;
+  background: #181c24;
 }
 .chat-messages::-webkit-scrollbar-thumb {
-  background: #233554;
+  background: #232b3a;
   border-radius: 4px;
 }
 
@@ -76,8 +78,8 @@ html {
 
 .chat-message .avatar {
   font-size: 1.7rem;
-  color: #64ffda;
-  background: #233554;
+  color: #6ec1e4;
+  background: #232b3a;
   border-radius: 50%;
   width: 2.5rem;
   height: 2.5rem;
@@ -88,33 +90,33 @@ html {
 }
 
 .chat-message.user .avatar {
-  color: #0a192f;
-  background: #64ffda;
+  color: #232b3a;
+  background: #6ec1e4;
 }
 
 .bubble {
-  background: #112240;
+  background: #232b3a;
   border-radius: 1.2rem;
-  padding: 0.85rem 1.2rem;
-  box-shadow: 0 1px 8px 0 rgba(10, 25, 47, 0.1);
+  padding: 0.95rem 1.3rem;
+  box-shadow: 0 1px 8px 0 rgba(24,28,36,0.10);
   max-width: 70vw;
-  font-size: 1.05rem;
+  font-size: 1.08rem;
   position: relative;
   word-break: break-word;
-  color: #a8b2d1;
-  border: 1px solid #233554;
+  color: #e6e6e6;
+  border: 1px solid #232b3a;
 }
 
 .chat-message.user .bubble {
-  background: #64ffda;
-  color: #0a192f;
-  border: 1px solid #64ffda;
+  background: #223c5c;
+  color: #e6e6e6;
+  border: 1px solid #223c5c;
 }
 
 .timestamp {
   display: block;
   font-size: 0.75rem;
-  color: #4b6aaf;
+  color: #7a88a1;
   margin-top: 0.2rem;
   text-align: right;
   opacity: 0.7;
@@ -124,41 +126,61 @@ html {
   display: flex;
   gap: 0.7rem;
   padding: 1.2rem 2rem;
-  background: rgba(20, 40, 80, 0.98);
-  border-top: 1px solid #233554;
-  box-shadow: 0 -2px 8px 0 rgba(10, 25, 47, 0.1);
+  background: #181c24;
+  border-top: 1px solid #232b3a;
+  box-shadow: 0 -2px 8px 0 rgba(24,28,36,0.10);
 }
 
 .chat-input input {
   flex: 1;
   font-size: 1.08rem;
   border-radius: 2rem;
-  background: #0a192f;
-  color: #a8b2d1;
-  border: 1px solid #233554;
+  background: #232b3a;
+  color: #e6e6e6;
+  border: 1px solid #232b3a;
   padding: 0.7rem 1.2rem;
   outline: none;
   transition: border 0.2s;
 }
 .chat-input input:focus {
-  border: 1.5px solid #64ffda;
-  background: #112240;
+  border: 1.5px solid #6ec1e4;
+  background: #223c5c;
 }
 
 .p-button {
-  background: #64ffda;
-  color: #0a192f;
+  background: #6ec1e4;
+  color: #232b3a;
   border: none;
   border-radius: 2rem;
   font-weight: 600;
   transition: background 0.2s;
 }
 .p-button:enabled:hover {
-  background: #52e0c4;
+  background: #4ea3c8;
 }
 .p-button:disabled {
-  background: #233554;
-  color: #4b6aaf;
+  background: #232b3a;
+  color: #7a88a1;
+/* Code block style for chat bubbles */
+.bubble pre, .bubble code {
+  background: #232b3a;
+  color: #bfc9db;
+  border-radius: 0.7rem;
+  padding: 0.7rem 1rem;
+  font-size: 1.01rem;
+  font-family: 'Fira Mono', 'Consolas', 'Menlo', monospace;
+  margin: 0.5rem 0 0 0;
+  display: block;
+  overflow-x: auto;
+  box-shadow: 0 1px 8px 0 rgba(24,28,36,0.10);
+  border: 1px solid #223c5c;
+}
+.bubble code {
+  display: inline;
+  padding: 0.1em 0.4em;
+  border-radius: 0.4em;
+  font-size: 0.98em;
+}
 }
 
 @media (max-width: 600px) {
