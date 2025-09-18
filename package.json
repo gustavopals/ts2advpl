@@ -1,0 +1,15 @@
+{
+	"name": "ts2advpl",
+	"version": "1.0.0",
+	"description": "AI especializada em converter código Typescript em ADVPL",
+	"keywords": [
+		"ia",
+		"typescript",
+		"advpl",
+		"protheus",
+		"totvs"
+	],
+	"author": "Gustavo Pals",
+	"license": "ISC",
+	"dependencies": {}
+}

@@ -1,0 +1,117 @@
+.chat-container {
+  display: flex;
+  flex-direction: column;
+  max-width: 480px;
+  height: 80vh;
+  margin: 2rem auto;
+  background: var(--surface-card, #fff);
+  border-radius: 1.5rem;
+  box-shadow: 0 4px 32px 0 rgba(0,0,0,0.08);
+  overflow: hidden;
+}
+
+.chat-header {
+  background: var(--primary-color, #6366f1);
+  color: #fff;
+  padding: 1rem 1.5rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #ececec;
+}
+
+.chat-title {
+  margin-left: 0.5rem;
+}
+
+.chat-messages {
+  flex: 1;
+  overflow-y: auto;
+  padding: 1.5rem;
+  background: var(--surface-ground, #f4f6fa);
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.chat-message {
+  display: flex;
+  align-items: flex-end;
+  gap: 0.7rem;
+}
+
+.chat-message.user {
+  flex-direction: row-reverse;
+}
+
+.chat-message .avatar {
+  font-size: 1.6rem;
+  color: var(--primary-color, #6366f1);
+  background: #e0e7ff;
+  border-radius: 50%;
+  width: 2.4rem;
+  height: 2.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.chat-message.user .avatar {
+  color: #fff;
+  background: var(--primary-color, #6366f1);
+}
+
+.bubble {
+  background: #fff;
+  border-radius: 1.2rem;
+  padding: 0.7rem 1.1rem;
+  box-shadow: 0 1px 6px 0 rgba(0,0,0,0.04);
+  max-width: 75%;
+  font-size: 1rem;
+  position: relative;
+  word-break: break-word;
+}
+
+.chat-message.user .bubble {
+  background: var(--primary-color, #6366f1);
+  color: #fff;
+}
+
+.timestamp {
+  display: block;
+  font-size: 0.75rem;
+  color: #b0b0b0;
+  margin-top: 0.2rem;
+  text-align: right;
+}
+
+.chat-input {
+  display: flex;
+  gap: 0.7rem;
+  padding: 1rem 1.5rem;
+  background: var(--surface-ground, #f4f6fa);
+  border-top: 1px solid #ececec;
+}
+
+.chat-input input {
+  flex: 1;
+  font-size: 1rem;
+  border-radius: 2rem;
+}
+
+@media (max-width: 600px) {
+  .chat-container {
+    max-width: 100vw;
+    height: 100vh;
+    border-radius: 0;
+    margin: 0;
+  }
+  .chat-messages {
+    padding: 1rem 0.5rem;
+  }
+  .chat-input {
+    padding: 0.7rem 0.5rem;
+  }
+}
