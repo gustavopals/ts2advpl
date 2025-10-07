@@ -1,59 +1,73 @@
-# Frontend
+# TS2AdvPL Frontend
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.15.
+Interface web para conversão de código TypeScript para AdvPL usando Angular e integração com OpenAI.
 
-## Development server
+## 🚀 Funcionalidades
 
-To start a local development server, run:
+- **Chat Interface Intuitiva**: Interface de conversação para enviar código TypeScript
+- **Conversão Inteligente**: Integração com OpenAI para conversão TS → AdvPL
+- **Syntax Highlighting**: Destaque de sintaxe para TypeScript e AdvPL
+- **Metadados Detalhados**: Informações sobre tokens, tempo de processão e modelo usado
+- **Design Responsivo**: Interface adaptada para desktop e mobile
+- **Tratamento de Erros**: Feedback visual para erros de conversão
 
+## 🎯 Como Usar
+
+1. **Cole seu código TypeScript** na área de texto
+2. **Pressione Enter** ou clique no botão enviar
+3. **Aguarde a conversão** (indicador de carregamento)
+4. **Receba o código AdvPL** formatado e comentado
+5. **Veja os metadados** da conversão (tokens, tempo, etc.)
+
+## 🔧 Configuração
+
+### Desenvolvimento
 ```bash
-ng serve
+npm install
+ng serve --port 4201
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
-
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
+### Build
 ```bash
 ng build
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+## 🛠️ Tecnologias
 
-## Running unit tests
+- **Angular 19**: Framework principal
+- **TypeScript**: Linguagem de desenvolvimento
+- **Highlight.js**: Syntax highlighting
+- **RxJS**: Programação reativa
+- **SCSS**: Estilização avançada
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+## 📡 Integração com Backend
 
-```bash
-ng test
+Base URL: `http://localhost:3000/api`
+
+### Exemplo de Uso
+```typescript
+// Enviar código
+{
+  "codigoTs": "function soma(a: number, b: number) { return a + b; }"
+}
+
+// Receber conversão
+{
+  "success": true,
+  "data": {
+    "resultado": "User Function Soma(nA, nB)\n  Return nA + nB\nEndUser",
+    "metadata": {
+      "modelo": "gpt-4",
+      "tokens": 542,
+      "tempo": 6693
+    }
+  }
+}
 ```
 
-## Running end-to-end tests
+## 🎨 Interface
 
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+- 🤖 **Mensagens do Bot**: Código AdvPL convertido
+- 👤 **Mensagens do Usuário**: Código TypeScript enviado
+- 📊 **Metadados**: Informações da conversão
+- ⚠️ **Tratamento de Erros**: Feedback visual

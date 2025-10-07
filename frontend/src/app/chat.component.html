@@ -1,36 +1,77 @@
 <div class="chat-container">
   <header class="chat-header">
-    <h1>DevBot IA</h1>
-    <p>Seu assistente de programação</p>
+    <h1>TS2AdvPL Converter</h1>
+    <p>🚀 Converta TypeScript para AdvPL com IA</p>
   </header>
 
   <main class="chat-body" #scrollMe>
     <div *ngFor="let message of messages" class="message-wrapper" [ngClass]="{ 'user-turn': message.sender === 'user' }">
-      <div class="message" [ngClass]="{ 'user-message': message.sender === 'user', 'bot-message': message.sender === 'bot' }">
-        <p class="message-text" [innerHTML]="message.text"></p>
-        
-        <pre *ngIf="message.code"><code [class]="'language-' + message.language">{{ message.code }}</code></pre>
+      <div class="message" [ngClass]="{ 
+        'user-message': message.sender === 'user', 
+        'bot-message': message.sender === 'bot',
+        'error-message': message.isError 
+      }">
+        <div class="message-content">
+          <p class="message-text" [innerHTML]="message.text"></p>
+          
+          <pre *ngIf="message.code"><code [class]="'language-' + message.language">{{ message.code }}</code></pre>
+          
+          <!-- Metadata da conversão -->
+          <div *ngIf="message.metadata && message.sender === 'bot'" class="conversion-metadata">
+            <div class="metadata-header">📊 Informações da Conversão</div>
+            <div class="metadata-grid">
+              <div class="metadata-item">
+                <span class="metadata-label">Modelo:</span>
+                <span class="metadata-value">{{ message.metadata.modelo }}</span>
+              </div>
+              <div class="metadata-item" *ngIf="message.metadata.tokens">
+                <span class="metadata-label">Tokens:</span>
+                <span class="metadata-value">{{ message.metadata.tokens }}</span>
+              </div>
+              <div class="metadata-item" *ngIf="message.metadata.tempo">
+                <span class="metadata-label">Tempo:</span>
+                <span class="metadata-value">{{ message.metadata.tempo }}ms</span>
+              </div>
+              <div class="metadata-item" *ngIf="message.metadata.caracteres">
+                <span class="metadata-label">Caracteres:</span>
+                <span class="metadata-value">{{ message.metadata.caracteres }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     
     <div *ngIf="isLoading" class="message-wrapper">
-        <div class="message bot-message typing-indicator">
-            <span></span><span></span><span></span>
+        <div class="message bot-message">
+          <div class="typing-indicator">
+            <div class="typing-text">🤖 Convertendo código...</div>
+            <div class="typing-dots">
+              <span></span><span></span><span></span>
+            </div>
+          </div>
         </div>
     </div>
   </main>
 
   <footer class="chat-footer">
-    <textarea 
-      class="text-input" 
-      placeholder="Digite sua pergunta ou código..."
-      [(ngModel)]="newMessage" 
-      (keydown.enter)="sendMessage($event)">
-    </textarea>
-    <button class="send-button" (click)="sendMessage($event)" [disabled]="!newMessage.trim()">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="24" height="24">
-        <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
-      </svg>
-    </button>
+    <div class="input-container">
+      <textarea 
+        class="text-input" 
+        placeholder="Cole seu código TypeScript aqui..."
+        [(ngModel)]="newMessage" 
+        (keydown.enter)="sendMessage($event)"
+        rows="3">
+      </textarea>
+      <button class="send-button" (click)="sendMessage($event)" [disabled]="!newMessage.trim() || isLoading">
+        <svg *ngIf="!isLoading" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
+          <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
+        </svg>
+        <div *ngIf="isLoading" class="loading-spinner"></div>
+      </button>
+    </div>
+    <div class="footer-info">
+      <small>💡 Cole código TypeScript e pressione Enter ou clique em enviar</small>
+    </div>
   </footer>
 </div>
