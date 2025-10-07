@@ -1,0 +1,25 @@
+// Schema para o TS2AdvPL Converter
+// Banco de dados SQLite para simplicidade
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Conversao {
+  id         Int      @id @default(autoincrement())
+  codigoTs   String   // Código TypeScript enviado
+  resultado  String   // Código AdvPL gerado
+  prompt     String?  // Prompt usado (opcional)
+  modelo     String   @default("gpt-4") // Modelo usado
+  tokens     Int?     // Tokens consumidos
+  tempo      Int?     // Tempo de processamento em ms
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  @@map("conversoes")
+}
