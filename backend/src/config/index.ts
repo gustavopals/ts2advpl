@@ -17,7 +17,7 @@ export const config = {
   openai: {
     apiKey: process.env.OPENAI_API_KEY,
     model: process.env.OPENAI_MODEL || 'gpt-4',
-    maxTokens: parseInt(process.env.OPENAI_MAX_TOKENS || '2048'),
+    maxTokens: parseInt(process.env.OPENAI_MAX_TOKENS || '4000'),
     temperature: parseFloat(process.env.OPENAI_TEMPERATURE || '0.1')
   },
 
@@ -27,11 +27,11 @@ export const config = {
   },
 
   // Limites da aplicação
-  limits: {
+limits: {
     maxCodeLength: parseInt(process.env.MAX_CODE_LENGTH || '50000'),
-    requestTimeout: parseInt(process.env.REQUEST_TIMEOUT || '30000'),
+    requestTimeout: parseInt(process.env.REQUEST_TIMEOUT || (5 * 60 * 1000).toString()), // 5 minutos
     maxRequestsPerMinute: parseInt(process.env.MAX_REQUESTS_PER_MINUTE || '10')
-  },
+},
 
   // Configurações de logging
   logging: {

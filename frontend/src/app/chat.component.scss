@@ -20,9 +20,9 @@
   display: flex;
   flex-direction: column;
   width: 100%;
-  max-width: 800px;
-  height: 85vh;
-  margin: 2.5vh auto;
+  max-width: 1200px;
+  height: 80vh;
+  margin: 2vh auto;
   background-color: var(--background-color);
   border-radius: 16px;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
@@ -31,7 +31,7 @@
 }
 
 .chat-header {
-  padding: 24px;
+  padding: 20px 20px;
   background: var(--header-bg);
   color: white;
   text-align: center;
@@ -39,20 +39,22 @@
 
   h1 {
     margin: 0;
-    font-size: 1.8rem;
-    font-weight: 600;
+    font-size: 2rem;
+    font-weight: 700;
     text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    letter-spacing: -0.5px;
   }
   p {
-    margin: 8px 0 0;
-    font-size: 1rem;
-    opacity: 0.9;
+    margin: 10px 0 0;
+    font-size: 1.1rem;
+    opacity: 0.95;
+    font-weight: 400;
   }
 }
 
 .chat-body {
   flex-grow: 1;
-  padding: 24px;
+  padding: 32px 40px;
   overflow-y: auto;
   background-color: var(--chat-body-bg);
 
@@ -70,15 +72,27 @@
 
 .message-wrapper {
   display: flex;
-  margin-bottom: 24px;
+  margin-bottom: 28px;
+  animation: fadeInUp 0.3s ease-out;
   
   &.user-turn {
     justify-content: flex-end;
   }
 }
 
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .message {
-  max-width: 85%;
+  max-width: 90%;
   border-radius: 18px;
   line-height: 1.6;
   box-shadow: 0 2px 8px rgba(0,0,0,0.08);
@@ -90,19 +104,21 @@
 }
 
 .message-content {
-  padding: 16px 20px;
+  padding: 20px 24px;
 }
 
 .message-text {
   margin: 0;
   word-wrap: break-word;
+  font-size: 1.05rem;
+  line-height: 1.7;
   
   code {
     background-color: rgba(0,0,0,0.1);
-    padding: 2px 6px;
+    padding: 3px 8px;
     border-radius: 4px;
     font-family: 'Fira Code', monospace;
-    font-size: 0.9em;
+    font-size: 0.95em;
   }
 }
 
@@ -127,23 +143,25 @@
 
 // Estilos para blocos de código
 .code-block-container {
-  margin: 16px 0;
+  margin: 20px 0;
   border-radius: 12px;
   overflow: hidden;
   box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  border: 1px solid rgba(171, 178, 191, 0.2);
 }
 
 pre {
   background-color: var(--code-bg) !important;
   margin: 0;
-  padding: 20px;
+  padding: 24px;
   overflow-x: auto;
   white-space: pre;
+  border-radius: 8px;
 
   code {
     font-family: 'Fira Code', 'JetBrains Mono', 'Courier New', monospace !important;
-    font-size: 0.9rem;
-    line-height: 1.5;
+    font-size: 0.95rem;
+    line-height: 1.6;
     color: #abb2bf;
     background: none !important;
     padding: 0 !important;
@@ -152,8 +170,8 @@ pre {
 
 // Metadata da conversão
 .conversion-metadata {
-  margin-top: 16px;
-  padding: 16px;
+  margin-top: 20px;
+  padding: 20px;
   background-color: var(--metadata-bg);
   border-radius: 12px;
   border: 1px solid rgba(0, 132, 255, 0.1);
@@ -168,8 +186,8 @@ pre {
 
 .metadata-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-  gap: 12px;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 16px;
 }
 
 .metadata-item {
@@ -191,7 +209,7 @@ pre {
 }
 
 .chat-footer {
-  padding: 20px 24px;
+  padding: 24px 40px;
   background-color: var(--footer-bg);
   border-top: 1px solid var(--border-color);
 }
@@ -206,14 +224,14 @@ pre {
   flex-grow: 1;
   border: 2px solid var(--border-color);
   border-radius: 16px;
-  padding: 14px 18px;
-  font-size: 1rem;
+  padding: 16px 20px;
+  font-size: 1.05rem;
   resize: none;
-  min-height: 50px;
-  max-height: 120px;
+  min-height: 60px;
+  max-height: 140px;
   transition: all 0.2s ease;
   font-family: 'Fira Code', monospace;
-  line-height: 1.4;
+  line-height: 1.5;
 
   &:focus {
     outline: none;
@@ -325,7 +343,72 @@ pre {
   }
 }
 
-// Responsividade
+// Otimizações para telas grandes (1600px+)
+@media (min-width: 1400px) {
+  .chat-container {
+    max-width: 1400px;
+    height: 95vh;
+  }
+  
+  .chat-body {
+    padding: 20px 20px;
+  }
+  
+  .chat-footer {
+    padding: 20px 20px;
+  }
+  
+  .message {
+    max-width: 95%;
+  }
+  
+  .message-content {
+    padding: 20px 20px;
+  }
+  
+  .message-text {
+    font-size: 1.1rem;
+    line-height: 1.5;
+  }
+  
+  pre code {
+    font-size: 1rem !important;
+    line-height: 1.7 !important;
+  }
+  
+  .metadata-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+  }
+  
+  .text-input {
+    font-size: 1.1rem;
+    padding: 18px 22px;
+    min-height: 70px;
+  }
+  
+  .send-button {
+    width: 56px;
+    height: 56px;
+  }
+}
+
+// Responsividade para tablets
+@media (min-width: 769px) and (max-width: 1399px) {
+  .chat-container {
+    max-width: 1000px;
+  }
+  
+  .message {
+    max-width: 88%;
+  }
+  
+  .metadata-grid {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  }
+}
+
+// Responsividade para mobile
 @media (max-width: 768px) {
   .chat-container {
     height: 100vh;
@@ -343,11 +426,22 @@ pre {
   }
   
   .message {
-    max-width: 90%;
+    max-width: 92%;
+  }
+  
+  .message-text {
+    font-size: 1rem;
+    line-height: 1.6;
   }
   
   .metadata-grid {
     grid-template-columns: 1fr;
     gap: 8px;
+  }
+  
+  .text-input {
+    font-size: 1rem;
+    padding: 14px 16px;
+    min-height: 50px;
   }
 }
